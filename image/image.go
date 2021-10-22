@@ -4,6 +4,9 @@ import (
 	"image"
 	"net/http"
 	"github.com/disintegration/imageorient"
+	_ "image/gif"
+	_ "image/jpeg"
+	_ "image/png"
 )
 //image width= img.Bounds().Dx()
 //image height= img.Bounds().Dy()
