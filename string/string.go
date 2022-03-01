@@ -3,6 +3,7 @@ package string
 import (
 	"regexp"
 	"strings"
+	"unicode/utf8"
 )
 //fomat 12345678 to 12,345,678
 func NumFormat(str string) string {
@@ -44,4 +45,8 @@ func ClearXssSql(src string)(res string)  {
 	src = re.ReplaceAllString(src, "")
 	res=src
 	return
+}
+//get str len 中英文
+func GetStrLen(str string) int {
+	return utf8.RuneCountInString(str)
 }
