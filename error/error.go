@@ -8,7 +8,7 @@ import (
 
 // 打印堆栈信息
 //print error stack
-func printStackTrace(err interface{}) string {
+func PrintStackTrace(err interface{}) string {
 	buf := new(bytes.Buffer)
 	_, _ = fmt.Fprintf(buf, "%v\n", err)
 	for i := 1; ; i++ {
