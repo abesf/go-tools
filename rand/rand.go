@@ -5,3 +5,5 @@ package rand
 //	//r := rand.New(rand.NewSource(time.Now().UnixNano()))
 //	return
 //}
+
+//aaaa
