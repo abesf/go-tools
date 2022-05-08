@@ -28,7 +28,7 @@ func main()  {
 	fmt.Println(b)
 }
 func WaitTimeout(wg *sync.WaitGroup, timeout time.Duration) bool {
-	ch := make(chan struct{})
+	var ch = make(chan struct{})
 	go func() {
 		wg.Wait()
 		close(ch)
