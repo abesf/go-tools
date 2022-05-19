@@ -1,11 +1,13 @@
 package string
 
 import (
+	"net/url"
 	"regexp"
 	"strings"
 	"unicode/utf8"
 )
-//fomat 12345678 to 12,345,678
+
+// NumFormat format 12345678 to 12,345,678
 func NumFormat(str string) string {
 	numStr := strings.Split(str, ".")[0] //如果有小数获取整数部分
 	length := len(str)
@@ -18,7 +20,8 @@ func NumFormat(str string) string {
 	}
 	return numStr
 }
-//filter string html css js script
+
+// ClearXssSql filter string html css js script
 func ClearXssSql(src string)(res string)  {
 	src = strings.TrimSpace(src) //去空格
 	//将HTML标签全转换成小写
@@ -46,7 +49,22 @@ func ClearXssSql(src string)(res string)  {
 	res=src
 	return
 }
-//get str len 中英文
+
+// GetStrLen get str len 中英文
 func GetStrLen(str string) int {
 	return utf8.RuneCountInString(str)
+}
+
+// UrlEncode string  UrlEncode
+func UrlEncode(str string) string {
+	return url.QueryEscape(str)
+}
+
+// UrlDecode string  UrlDecode
+func UrlDecode(str string) string {
+	res, err := url.QueryUnescape(str)
+	if err != nil {
+		return ""
+	}
+	return res
 }
