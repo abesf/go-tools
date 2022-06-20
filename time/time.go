@@ -49,3 +49,7 @@ func TimeStampToTimeStr(timestamp int64,timeType int) string {
 	timeString := timeNow.Format(timeTemplate) //2015-06-15 08:52:32
 	return timeString
 }
+//2009-03-28 sep  to 2009  03  28
+func TimeStrtoYearMonthDay(t1 string, timeType int) (year int,month time.Month,day int) {
+	return time.Unix(TimeStrToTimeStamp(t1,timeType),0).Date()
+}
