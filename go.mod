@@ -1,4 +1,4 @@
-module go-tools
+module github.com/abesf/go-tools
 
 go 1.15
 
