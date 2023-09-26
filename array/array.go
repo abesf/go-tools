@@ -3,6 +3,7 @@ package array
 import "reflect"
 //get int64 column from Two dimensional array
 //从二维数组里的int64列 组成一个独立一维数组
+
 func GetIds(lists interface{}, field string) []int64 {
 	t := reflect.TypeOf(lists)
 	v := reflect.ValueOf(lists)
