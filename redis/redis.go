@@ -1,8 +1,10 @@
 package redis
 
 import (
+	"context"
 	"github.com/go-redis/redis/v8"
 	"sync"
+	"time"
 )
 var once sync.Once
 var redisClients map[string]*redis.Client
@@ -31,4 +33,16 @@ func GetRedisClient(addr,pass string) *redis.Client {
 	redisClients[addr] = client
 
 	return client
+}
+//资源加锁
+func AcquireLock(conn *redis.Client,key string,value string,t time.Duration) (ok bool, err error) {
+	ok,err=conn.SetNX(context.Background(),key,value,t).Result()
+	//fmt.Printf("AcquireLock key=%+v  ok=%+v ,err=%+v ",key,ok,err)
+	return
+}
+//资源解锁
+func ReleaseLock(conn *redis.Client,key string) (ok int64, err error) {
+	ok,err=conn.Del(context.Background(),key).Result()
+	//fmt.Printf("ok=%+v\n,err=%+v\n",ok,err)
+	return
 }
